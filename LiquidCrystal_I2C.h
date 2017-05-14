@@ -3,6 +3,7 @@
 
 #include <inttypes.h>
 #include <Print.h>
+#include <SoftI2CMaster.h>
 
 // commands
 #define LCD_CLEARDISPLAY 0x01
@@ -68,7 +69,7 @@ public:
 	 * @param lcd_rows	Number of rows your LCD display has.
 	 * @param charsize	The size in dots that the display has, use LCD_5x10DOTS or LCD_5x8DOTS.
 	 */
-	LiquidCrystal_I2C(uint8_t lcd_addr, uint8_t lcd_cols, uint8_t lcd_rows, uint8_t charsize = LCD_5x8DOTS);
+	LiquidCrystal_I2C(uint8_t sdaPin, uint8_t sclPin, uint8_t lcd_addr, uint8_t lcd_cols, uint8_t lcd_rows, uint8_t charsize = LCD_5x8DOTS);
 
 	/**
 	 * Set the LCD display in the correct begin state, must be called before anything else is done.
@@ -152,6 +153,9 @@ private:
 	void write4bits(uint8_t);
 	void expanderWrite(uint8_t);
 	void pulseEnable(uint8_t);
+	SoftI2CMaster _i2c;
+	uint8_t _sdaPin;
+	uint8_t _sclPin;
 	uint8_t _addr;
 	uint8_t _displayfunction;
 	uint8_t _displaycontrol;
