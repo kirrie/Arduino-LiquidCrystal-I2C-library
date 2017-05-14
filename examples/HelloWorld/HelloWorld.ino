@@ -1,8 +1,8 @@
-#include <Wire.h> 
+#include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
-// Set the LCD address to 0x27 for a 16 chars and 2 line display
-LiquidCrystal_I2C lcd(0x27, 16, 2);
+// first 2 parameters are digital pins for sda, scl.
+LiquidCrystal_I2C lcd(7, 8, 0x27, 16, 2);
 
 void setup()
 {

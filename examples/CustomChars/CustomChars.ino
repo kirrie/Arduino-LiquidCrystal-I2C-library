@@ -11,7 +11,8 @@ uint8_t cross[8] = {0x0, 0x1b, 0xe, 0x4, 0xe, 0x1b, 0x0};
 uint8_t retarrow[8] = {	0x1, 0x1, 0x5, 0x9, 0x1f, 0x8, 0x4};
 
 // Set the LCD address to 0x27 for a 16 chars and 2 line display
-LiquidCrystal_I2C lcd(0x27, 16, 2);
+// first 2 parameters are digital pins for sda, scl.
+LiquidCrystal_I2C lcd(7, 8, 0x27, 16, 2);
 
 void setup()
 {
@@ -62,4 +63,3 @@ void loop()
 {
 	// Do nothing here...
 }
-
